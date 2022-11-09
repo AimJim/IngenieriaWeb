@@ -22,5 +22,4 @@ import appEmpresaCoche
 urlpatterns = [
     path('appEmpresaCoche/', include('appEmpresaCoche.urls')),
     path('admin/', admin.site.urls),
-    
 ]
