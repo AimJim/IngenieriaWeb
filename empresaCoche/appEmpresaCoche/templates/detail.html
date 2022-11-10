@@ -84,25 +84,34 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Service</a>
+                        {% load static %}
+                        <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
+                        {% load static %}
+                        <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                        {% load static %}
+                        <a href="{% url 'service' %}" class="nav-item nav-link">Service</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Cars</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="car.html" class="dropdown-item">Car Listing</a>
-                                <a href="detail.html" class="dropdown-item active">Car Detail</a>
-                                <a href="booking.html" class="dropdown-item">Car Booking</a>
+                                {% load static %}
+                                <a href="{% url 'car' %}" class="dropdown-item">Car Listing</a>
+                                {% load static %}
+                                <a href="{% url 'detail' %}" class="dropdown-item active">Car Detail</a>
+                                {% load static %}
+                                <a href="{% url 'booking' %}" class="dropdown-item">Car Booking</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="team.html" class="dropdown-item">The Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                {% load static %}
+                                <a href="{% url 'team' %}" class="dropdown-item">The Team</a>
+                                {% load static %}
+                                <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        {% load static %}
+                        <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
             </nav>
@@ -178,16 +187,20 @@
                     <h1 class="display-4 text-uppercase mb-5">Mercedes Benz R3</h1>
                     <div class="row mx-n2 mb-3">
                         <div class="col-md-3 col-6 px-2 pb-2">
-                            <img class="img-fluid w-100" src="img/gallery-1.jpg" alt="">
+                            {% load static %}
+                            <img class="img-fluid w-100" src="{% static 'img/gallery-1.jpg' %}" alt="">
                         </div>
                         <div class="col-md-3 col-6 px-2 pb-2">
-                            <img class="img-fluid w-100" src="img/gallery-2.jpg" alt="">
+                            {% load static %}
+                            <img class="img-fluid w-100" src="{% static 'img/gallery-2.jpg' %}" alt="">
                         </div>
                         <div class="col-md-3 col-6 px-2 pb-2">
-                            <img class="img-fluid w-100" src="img/gallery-3.jpg" alt="">
+                            {% load static %}
+                            <img class="img-fluid w-100" src="{% static 'img/gallery-3.jpg' %}" alt="">
                         </div>
                         <div class="col-md-3 col-6 px-2 pb-2">
-                            <img class="img-fluid w-100" src="img/gallery-4.jpg" alt="">
+                            {% load static %}
+                            <img class="img-fluid w-100" src="{% static 'img/gallery-4.jpg' %}" alt="">
                         </div>
                     </div>
                     <p>Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
@@ -299,7 +312,8 @@
             <h2 class="mb-4">Related Cars</h2>
             <div class="owl-carousel related-carousel position-relative" style="padding: 0 30px;">
                 <div class="rent-item">
-                    <img class="img-fluid mb-4" src="img/car-rent-1.png" alt="">
+                    {% load static %}
+                    <img class="img-fluid mb-4" src="{% static 'img/car-rent-1.png' %}" alt="">
                     <h4 class="text-uppercase mb-4">Mercedes Benz R3</h4>
                     <div class="d-flex justify-content-center mb-4">
                         <div class="px-2">
@@ -318,7 +332,8 @@
                     <a class="btn btn-primary px-3" href="">$99.00/Day</a>
                 </div>
                 <div class="rent-item">
-                    <img class="img-fluid mb-4" src="img/car-rent-2.png" alt="">
+                    {% load static %}
+                    <img class="img-fluid mb-4" src="{% static 'img/car-rent-2.png' %}" alt="">
                     <h4 class="text-uppercase mb-4">Mercedes Benz R3</h4>
                     <div class="d-flex justify-content-center mb-4">
                         <div class="px-2">
@@ -337,7 +352,8 @@
                     <a class="btn btn-primary px-3" href="">$99.00/Day</a>
                 </div>
                 <div class="rent-item">
-                    <img class="img-fluid mb-4" src="img/car-rent-3.png" alt="">
+                    {% load static %}
+                    <img class="img-fluid mb-4" src="{% static 'img/car-rent-3.png' %}" alt="">
                     <h4 class="text-uppercase mb-4">Mercedes Benz R3</h4>
                     <div class="d-flex justify-content-center mb-4">
                         <div class="px-2">
@@ -356,7 +372,8 @@
                     <a class="btn btn-primary px-3" href="">$99.00/Day</a>
                 </div>
                 <div class="rent-item">
-                    <img class="img-fluid mb-4" src="img/car-rent-4.png" alt="">
+                    {% load static %}
+                    <img class="img-fluid mb-4" src="{% static 'img/car-rent-4.png' %}" alt="">
                     <h4 class="text-uppercase mb-4">Mercedes Benz R3</h4>
                     <div class="d-flex justify-content-center mb-4">
                         <div class="px-2">
@@ -385,28 +402,36 @@
         <div class="container py-5">
             <div class="owl-carousel vendor-carousel">
                 <div class="bg-light p-4">
-                    <img src="img/vendor-1.png" alt="">
+                    {% load static %}
+                    <img src="{% static 'img/vendor-1.png' %}" alt="">
                 </div>
                 <div class="bg-light p-4">
-                    <img src="img/vendor-2.png" alt="">
+                    {% load static %}
+                    <img src="{% static 'img/vendor-2.png' %}" alt="">
                 </div>
                 <div class="bg-light p-4">
-                    <img src="img/vendor-3.png" alt="">
+                    {% load static %}
+                    <img src="{% static 'img/vendor-3.png' %}" alt="">
                 </div>
                 <div class="bg-light p-4">
-                    <img src="img/vendor-4.png" alt="">
+                    {% load static %}
+                    <img src="{% static 'img/vendor-4.png' %}" alt="">
                 </div>
                 <div class="bg-light p-4">
-                    <img src="img/vendor-5.png" alt="">
+                    {% load static %}
+                    <img src="{% static 'img/vendor-5.png' %}" alt="">
                 </div>
                 <div class="bg-light p-4">
-                    <img src="img/vendor-6.png" alt="">
+                    {% load static %}
+                    <img src="{% static 'img/vendor-6.png' %}" alt="">
                 </div>
                 <div class="bg-light p-4">
-                    <img src="img/vendor-7.png" alt="">
+                    {% load static %}
+                    <img src="{% static 'img/vendor-7.png' %}" alt="">
                 </div>
                 <div class="bg-light p-4">
-                    <img src="img/vendor-8.png" alt="">
+                    {% load static %}
+                    <img src="{% static 'img/vendor-8.png' %}" alt="">
                 </div>
             </div>
         </div>
@@ -445,22 +470,28 @@
                 <h4 class="text-uppercase text-light mb-4">Car Gallery</h4>
                 <div class="row mx-n1">
                     <div class="col-4 px-1 mb-2">
-                        <a href=""><img class="w-100" src="img/gallery-1.jpg" alt=""></a>
+                        {% load static %}
+                        <a href=""><img class="w-100" src="{% static 'img/gallery-1.jpg' %}" alt=""></a>
                     </div>
                     <div class="col-4 px-1 mb-2">
-                        <a href=""><img class="w-100" src="img/gallery-2.jpg" alt=""></a>
+                        {% load static %}
+                        <a href=""><img class="w-100" src="{% static 'img/gallery-2.jpg' %}" alt=""></a>
                     </div>
                     <div class="col-4 px-1 mb-2">
-                        <a href=""><img class="w-100" src="img/gallery-3.jpg" alt=""></a>
+                        {% load static %}
+                        <a href=""><img class="w-100" src="{% static 'img/gallery-3.jpg' %}" alt=""></a>
                     </div>
                     <div class="col-4 px-1 mb-2">
-                        <a href=""><img class="w-100" src="img/gallery-4.jpg" alt=""></a>
+                        {% load static %}
+                        <a href=""><img class="w-100" src="{% static 'img/gallery-4.jpg' %}" alt=""></a>
                     </div>
                     <div class="col-4 px-1 mb-2">
-                        <a href=""><img class="w-100" src="img/gallery-5.jpg" alt=""></a>
+                        {% load static %}
+                        <a href=""><img class="w-100" src="{% static 'img/gallery-5.jpg' %}" alt=""></a>
                     </div>
                     <div class="col-4 px-1 mb-2">
-                        <a href=""><img class="w-100" src="img/gallery-6.jpg" alt=""></a>
+                        {% load static %}
+                        <a href=""><img class="w-100" src="{% static 'img/gallery-6.jpg' %}" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -481,7 +512,8 @@
     </div>
     <div class="container-fluid bg-dark py-4 px-sm-3 px-md-5">
         <p class="mb-2 text-center text-body">&copy; <a href="#">Your Site Name</a>. All Rights Reserved.</p>
-        <p class="m-0 text-center text-body">Designed by <a href="https://htmlcodex.com">HTML Codex</a></p>
+        {% load static %}
+        <p class="m-0 text-center text-body">Designed by <a href="{% static 'https://htmlcodex.com' %}">HTML Codex</a></p>
     </div>
     <!-- Footer End -->
 
@@ -491,17 +523,26 @@
 
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    {% load static %}
+    <script src="{% static 'https://code.jquery.com/jquery-3.4.1.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    {% load static %}
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>
