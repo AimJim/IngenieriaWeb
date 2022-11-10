@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, loader
 
 def index(request):
-    return HttpResponse("Resuesta del index")
+    return render(request, "index.html")
 
 def car(request):
     return render(request, "car.html")
