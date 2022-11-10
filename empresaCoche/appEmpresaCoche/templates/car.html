@@ -448,17 +448,26 @@
 
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    {% load static %}
+    <script src="{% static 'https://code.jquery.com/jquery-3.4.1.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+    {% load static %}
+    <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    {% load static %}
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>
