@@ -1,30 +1,59 @@
 from http.client import HTTPResponse
 from django.http import HttpResponse
-from django.shortcuts import render, loader
+from django.shortcuts import get_list_or_404, render, loader
+from .models import Car,Location
 
 def index(request):
-    return render(request, "index.html")
+    localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
+    coches = get_list_or_404(Car.objects.order_by('nombre'))
+    context = {'localizaciones': localizaciones, 'coches': coches}
+    return render(request, "index.html", context)
 
 def car(request):
-    return render(request, "car.html")
+    localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
+    coches = get_list_or_404(Car.objects.order_by('nombre'))
+    context = {'localizaciones': localizaciones, 'coches': coches}
+    return render(request, 'car.html', context)
 
 def about(request):
-    return render(request, "about.html")
+    localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
+    coches = get_list_or_404(Car.objects.order_by('nombre'))
+    context = {'localizaciones': localizaciones, 'coches': coches}
+    return render(request, "about.html", context)
 
 def booking(request):
-    return render(request, "booking.html")
+    localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
+    coches = get_list_or_404(Car.objects.order_by('nombre'))
+    context = {'localizaciones': localizaciones, 'coches': coches}
+    return render(request, "booking.html", context)
 
 def contact(request):
-    return render(request, "contact.html")
+    localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
+    coches = get_list_or_404(Car.objects.order_by('nombre'))
+    context = {'localizaciones': localizaciones, 'coches': coches}
+    return render(request, "contact.html", context)
 
 def detail(request):
-    return render(request, "detail.html")
+    localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
+    coches = get_list_or_404(Car.objects.order_by('nombre'))
+    context = {'localizaciones': localizaciones, 'coches': coches}
+    return render(request, "detail.html", context)
 
 def service(request):
-    return render(request, "service.html")
+    localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
+    coches = get_list_or_404(Car.objects.order_by('nombre'))
+    context = {'localizaciones': localizaciones, 'coches': coches}
+    return render(request, "service.html", context)
 
 def team(request):
-    return render(request, "team.html")
+    localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
+    coches = get_list_or_404(Car.objects.order_by('nombre'))
+    context = {'localizaciones': localizaciones, 'coches': coches}
+    return render(request, "team.html", context)
 
 def testimonial(request):
-    return render(request, "testimonial.html")
+    localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
+    coches = get_list_or_404(Car.objects.order_by('nombre'))
+    context = {'localizaciones': localizaciones, 'coches': coches}
+    return render(request, "testimonial.html", context)
+
