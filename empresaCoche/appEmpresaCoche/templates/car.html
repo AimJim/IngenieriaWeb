@@ -147,7 +147,7 @@
                     <option value="{{car.id}}" >{{car.nombre}}</option>
                     {%endfor%}
                 </select>
-                {%endblock%}
+                
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
                 <button class="btn btn-primary btn-block mb-3" type="submit" style="height: 50px;">Search</button>
@@ -174,15 +174,16 @@
         <div class="container pt-5 pb-3">
             <h1 class="display-4 text-uppercase text-center mb-5">Find Your Car</h1>
             <div class="row">
+                {% for car in coches %}
                 <div class="col-lg-4 col-md-6 mb-2">
                     <div class="rent-item mb-4">
-                        {% load static %}
-                        <img class="img-fluid mb-4" src="{% static 'carimg/Honda_S2000.jpg' %}" alt="">
-                        <h4 class="text-uppercase mb-4">Honda S2000</h4>
+                        
+                        <img class="img-fluid mb-4" src="../static/{{car.img_url}}" alt="">
+                        <h4 class="text-uppercase mb-4">{{car.nombre}}</h4>
                         <div class="d-flex justify-content-center mb-4">
                             <div class="px-2">
                                 <i class="fa fa-car text-primary mr-1"></i>
-                                <span>2005</span>
+                                <span>{{car.anyoF}}</span>
                             </div>
                             <div class="px-2 border-left border-right">
                                 <i class="fa fa-cogs text-primary mr-1"></i>
@@ -196,116 +197,9 @@
                         <a class="btn btn-primary px-3" href="">$99.00/Day</a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="rent-item active mb-4">
-                        {% load static %}
-                        <img class="img-fluid mb-4" src="{% static 'carimg/mazda_rx7_fd.jpg' %}" alt="">
-                        <h4 class="text-uppercase mb-4">Mazda RX7 FD</h4>
-                        <div class="d-flex justify-content-center mb-4">
-                            <div class="px-2">
-                                <i class="fa fa-car text-primary mr-1"></i>
-                                <span>2002</span>
-                            </div>
-                            <div class="px-2 border-left border-right">
-                                <i class="fa fa-cogs text-primary mr-1"></i>
-                                <span>Manual</span>
-                            </div>
-                            <div class="px-2">
-                                <i class="fa fa-road text-primary mr-1"></i>
-                                <span>25K</span>
-                            </div>
-                        </div>
-                        <a class="btn btn-primary px-3" href="">$99.00/Day</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="rent-item mb-4">
-                        {% load static %}
-                        <img class="img-fluid mb-4" src="{% static 'carimg/Toyota_Celica.jpeg' %}" alt="">
-                        <h4 class="text-uppercase mb-4">Toyota Celica</h4>
-                        <div class="d-flex justify-content-center mb-4">
-                            <div class="px-2">
-                                <i class="fa fa-car text-primary mr-1"></i>
-                                <span>2004</span>
-                            </div>
-                            <div class="px-2 border-left border-right">
-                                <i class="fa fa-cogs text-primary mr-1"></i>
-                                <span>Manual</span>
-                            </div>
-                            <div class="px-2">
-                                <i class="fa fa-road text-primary mr-1"></i>
-                                <span>25K</span>
-                            </div>
-                        </div>
-                        <a class="btn btn-primary px-3" href="">$99.00/Day</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="rent-item mb-4">
-                        {% load static %}
-                        <img class="img-fluid mb-4" src="{% static 'carimg/Nissan_Skyline_R32_GT-R.jpg' %}" alt="">
-                        <h4 class="text-uppercase mb-4">Nissan Skyline GTR R32</h4>
-                        <div class="d-flex justify-content-center mb-4">
-                            <div class="px-2">
-                                <i class="fa fa-car text-primary mr-1"></i>
-                                <span>1988</span>
-                            </div>
-                            <div class="px-2 border-left border-right">
-                                <i class="fa fa-cogs text-primary mr-1"></i>
-                                <span>Manual</span>
-                            </div>
-                            <div class="px-2">
-                                <i class="fa fa-road text-primary mr-1"></i>
-                                <span>25K</span>
-                            </div>
-                        </div>
-                        <a class="btn btn-primary px-3" href="">$99.00/Day</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="rent-item mb-4">
-                        {% load static %}
-                        <img class="img-fluid mb-4" src="{% static 'carimg/nissan_350z.jpg' %}" alt="">
-                        <h4 class="text-uppercase mb-4">Nissan 350Z</h4>
-                        <div class="d-flex justify-content-center mb-4">
-                            <div class="px-2">
-                                <i class="fa fa-car text-primary mr-1"></i>
-                                <span>2005</span>
-                            </div>
-                            <div class="px-2 border-left border-right">
-                                <i class="fa fa-cogs text-primary mr-1"></i>
-                                <span>Manual</span>
-                            </div>
-                            <div class="px-2">
-                                <i class="fa fa-road text-primary mr-1"></i>
-                                <span>25K</span>
-                            </div>
-                        </div>
-                        <a class="btn btn-primary px-3" href="">$99.00/Day</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="rent-item mb-4">
-                        {% load static %}
-                        <img class="img-fluid mb-4" src="{% static 'carimg/nissan_silvia_s13.jpg' %}" alt="">
-                        <h4 class="text-uppercase mb-4">Nissan Silvia S13</h4>
-                        <div class="d-flex justify-content-center mb-4">
-                            <div class="px-2">
-                                <i class="fa fa-car text-primary mr-1"></i>
-                                <span>1988</span>
-                            </div>
-                            <div class="px-2 border-left border-right">
-                                <i class="fa fa-cogs text-primary mr-1"></i>
-                                <span>Manual</span>
-                            </div>
-                            <div class="px-2">
-                                <i class="fa fa-road text-primary mr-1"></i>
-                                <span>25K</span>
-                            </div>
-                        </div>
-                        <a class="btn btn-primary px-3" href="">$99.00/Day</a>
-                    </div>
-                </div>
+                {% endfor %}
+                
+                {%endblock%}
             </div>
         </div>
     </div>
