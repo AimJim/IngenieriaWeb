@@ -4,7 +4,7 @@ class Car(models.Model):
     km=models.IntegerField()
     anyoF=models.IntegerField()
     potencia=models.IntegerField()
-    img_url=models.URLField(max_length=512)
+    img_url=models.CharField(max_length=512)
 
     def __str__(self) -> str:
         return self.nombre
