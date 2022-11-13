@@ -23,7 +23,7 @@
     {% load static %}
     <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
     {% load static %}
-    <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
     {% load static %}
@@ -140,13 +140,13 @@
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
                 <div class="date mb-3" id="date" data-target-input="nearest">
                     <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Pickup Date"
-                        data-target="#date" data-toggle="datetimepicker" />
+                        data-target="#date" data-toggle="datetimepicker">
                 </div>
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
                 <div class="time mb-3" id="time" data-target-input="nearest">
                     <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Pickup Time"
-                        data-target="#time" data-toggle="datetimepicker" />
+                        data-target="#time" data-toggle="datetimepicker">
                 </div>
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
@@ -156,7 +156,7 @@
                     <option value="{{car.id}}" >{{car.nombre}}</option>
                     {%endfor%}
                 </select>
-                {%endblock%}
+                
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
                 <button class="btn btn-primary btn-block mb-3" type="submit" style="height: 50px;">Search</button>
@@ -254,36 +254,36 @@
                         </div>
                     </div>
                </div>
-
+               
                 <div class="col-lg-4 mb-5">
                     <div class="bg-secondary p-5">
                         <h3 class="text-primary text-center mb-4">Check Availability</h3>
                         <div class="form-group">
                             <select class="custom-select px-4" style="height: 50px;">
                                 <option selected>Pickup Location</option>
-                                <option value="1">Location 1</option>
-                                <option value="2">Location 2</option>
-                                <option value="3">Location 3</option>
+                                {%for location in localizaciones %}
+                                <option value="{{location.id}}" >{{location.nombre}}</option>
+                                {%endfor%}
                             </select>
                         </div>
                         <div class="form-group">
                             <select class="custom-select px-4" style="height: 50px;">
                                 <option selected>Drop Location</option>
-                                <option value="1">Location 1</option>
-                                <option value="2">Location 2</option>
-                                <option value="3">Location 3</option>
+                                {%for location in localizaciones %}
+                                <option value="{{location.id}}" >{{location.nombre}}</option>
+                                {%endfor%}
                             </select>
                         </div>
                         <div class="form-group">
                             <div class="date" id="date1" data-target-input="nearest">
                                 <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Pickup Date"
-                                    data-target="#date1" data-toggle="datetimepicker" />
+                                    data-target="#date1" data-toggle="datetimepicker">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="time" id="time1" data-target-input="nearest">
                                 <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Pickup Time"
-                                    data-target="#time1" data-toggle="datetimepicker" />
+                                    data-target="#time1" data-toggle="datetimepicker">
                             </div>
                         </div>
                         <div class="form-group">
@@ -310,86 +310,33 @@
         <div class="container pb-5">
             <h2 class="mb-4">Related Cars</h2>
             <div class="owl-carousel related-carousel position-relative" style="padding: 0 30px;">
+                {% for car in coches %}
                 <div class="rent-item">
-                    {% load static %}
-                    <img class="img-fluid mb-4" src="{% static 'img/car-rent-1.png' %}" alt="">
-                    <h4 class="text-uppercase mb-4">Mercedes Benz R3</h4>
+                    
+                    
+                    <img class="img-fluid mb-4" src="../static/{{car.img_url}}" alt="">
+                    <h4 class="text-uppercase mb-4">{{car.nombre}}</h4>
                     <div class="d-flex justify-content-center mb-4">
                         <div class="px-2">
                             <i class="fa fa-car text-primary mr-1"></i>
-                            <span>2015</span>
+                            <span>{{car.anyoF}}</span>
                         </div>
                         <div class="px-2 border-left border-right">
                             <i class="fa fa-cogs text-primary mr-1"></i>
-                            <span>AUTO</span>
+                            <span>Manual</span>
                         </div>
                         <div class="px-2">
                             <i class="fa fa-road text-primary mr-1"></i>
-                            <span>25K</span>
+                            <span>{{car.km}}</span>
                         </div>
                     </div>
+                    
                     <a class="btn btn-primary px-3" href="">$99.00/Day</a>
+                    
                 </div>
-                <div class="rent-item">
-                    {% load static %}
-                    <img class="img-fluid mb-4" src="{% static 'img/car-rent-2.png' %}" alt="">
-                    <h4 class="text-uppercase mb-4">Mercedes Benz R3</h4>
-                    <div class="d-flex justify-content-center mb-4">
-                        <div class="px-2">
-                            <i class="fa fa-car text-primary mr-1"></i>
-                            <span>2015</span>
-                        </div>
-                        <div class="px-2 border-left border-right">
-                            <i class="fa fa-cogs text-primary mr-1"></i>
-                            <span>AUTO</span>
-                        </div>
-                        <div class="px-2">
-                            <i class="fa fa-road text-primary mr-1"></i>
-                            <span>25K</span>
-                        </div>
-                    </div>
-                    <a class="btn btn-primary px-3" href="">$99.00/Day</a>
-                </div>
-                <div class="rent-item">
-                    {% load static %}
-                    <img class="img-fluid mb-4" src="{% static 'img/car-rent-3.png' %}" alt="">
-                    <h4 class="text-uppercase mb-4">Mercedes Benz R3</h4>
-                    <div class="d-flex justify-content-center mb-4">
-                        <div class="px-2">
-                            <i class="fa fa-car text-primary mr-1"></i>
-                            <span>2015</span>
-                        </div>
-                        <div class="px-2 border-left border-right">
-                            <i class="fa fa-cogs text-primary mr-1"></i>
-                            <span>AUTO</span>
-                        </div>
-                        <div class="px-2">
-                            <i class="fa fa-road text-primary mr-1"></i>
-                            <span>25K</span>
-                        </div>
-                    </div>
-                    <a class="btn btn-primary px-3" href="">$99.00/Day</a>
-                </div>
-                <div class="rent-item">
-                    {% load static %}
-                    <img class="img-fluid mb-4" src="{% static 'img/car-rent-4.png' %}" alt="">
-                    <h4 class="text-uppercase mb-4">Mercedes Benz R3</h4>
-                    <div class="d-flex justify-content-center mb-4">
-                        <div class="px-2">
-                            <i class="fa fa-car text-primary mr-1"></i>
-                            <span>2015</span>
-                        </div>
-                        <div class="px-2 border-left border-right">
-                            <i class="fa fa-cogs text-primary mr-1"></i>
-                            <span>AUTO</span>
-                        </div>
-                        <div class="px-2">
-                            <i class="fa fa-road text-primary mr-1"></i>
-                            <span>25K</span>
-                        </div>
-                    </div>
-                    <a class="btn btn-primary px-3" href="">$99.00/Day</a>
-                </div>
+                {%endfor%}
+                {%endblock%}
+                
             </div>
         </div>
     </div>
