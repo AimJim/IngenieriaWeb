@@ -6,10 +6,3 @@
 	--> nidea, de momento, como mucho pa las listas de coches y poco mas
 	--> abria que crear las clases desde el cmd(Mirar alud) y ponerlo en django
 
-if(padre = "Aimar"){
-	querer = true;
-} else {
-	
-	querer = false;
-	matar(padre):
-}
