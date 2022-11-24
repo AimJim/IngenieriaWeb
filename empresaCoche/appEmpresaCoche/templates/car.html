@@ -32,6 +32,8 @@
     <!-- Template Stylesheet -->
     {% load static %}
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    
 </head>
 
 <body>
@@ -141,7 +143,7 @@
                 </div>
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
-                <select class="custom-select px-4 mb-3" style="height: 50px;">
+                <select id="carSelect" class="custom-select px-4 mb-3" style="height: 50px;">
                     <option selected>Select A Car</option>
                     {%for car in coches %}
                     <option value="{{car.id}}" >{{car.nombre}}</option>
@@ -150,7 +152,8 @@
                 
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
-                <button class="btn btn-primary btn-block mb-3" type="submit" style="height: 50px;">Search</button>
+                
+                <a href="{% url 'detail'%}"><button class="btn btn-primary btn-block mb-3" type="submit" style="height: 50px;" onclick="search()">Search</button></a>
             </div>
         </div>
     </div>
@@ -194,7 +197,7 @@
                                 <span>{{car.km}}</span>
                             </div>
                         </div>
-                        <a class="btn btn-primary px-3" href="">$99.00/Day</a>
+                        <a class="btn btn-primary px-3" href="">{{car.precio}}€/dia</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -381,6 +384,9 @@
     <!-- Template Javascript -->
     {% load static %}
     <script src="{% static 'js/main.js' %}"></script>
+    <!-- javascript propio -->
+    {% load static %}
+    <script src="{% static 'js/searchBar.js' %}"></script>
 </body>
 
 </html>

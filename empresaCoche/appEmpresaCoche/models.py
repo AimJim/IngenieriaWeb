@@ -5,6 +5,7 @@ class Car(models.Model):
     anyoF=models.IntegerField()
     potencia=models.IntegerField()
     img_url=models.CharField(max_length=512)
+    precio=models.IntegerField()
 
     def __str__(self) -> str:
         return self.nombre
