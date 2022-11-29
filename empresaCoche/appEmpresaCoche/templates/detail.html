@@ -323,7 +323,11 @@
                         </div>
                         <div class="px-2 border-left border-right">
                             <i class="fa fa-cogs text-primary mr-1"></i>
-                            <span>Manual</span>
+                            {%for t in transmision%}
+                                {%if t.carID.id == car.id%}
+                                    <span>{{t.transmissionIDs}}</span>
+                                {%endif%}
+                            {%endfor%}
                         </div>
                         <div class="px-2">
                             <i class="fa fa-road text-primary mr-1"></i>
