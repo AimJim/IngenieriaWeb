@@ -183,66 +183,31 @@
         <div class="container pt-5">
             <div class="row">
                 <div class="col-lg-8 mb-5">
-                    <h1 class="display-4 text-uppercase mb-5">Mercedes Benz R3</h1>
+                    {% for car in coches %}
+                    {% if car.id == selectedCar %}
+                    <h1 class="display-4 text-uppercase mb-5" id="carName">{{car.nombre}}</h1>
                     <div class="row mx-n2 mb-3">
                         <div class="col-md-3 col-6 px-2 pb-2">
-                            {% load static %}
-                            <img class="img-fluid w-100" src="{% static 'img/gallery-1.jpg' %}" alt="">
+                            
+                            <img class="img-fluid w-100" src="../static/{{car.img_url}}" alt="">
                         </div>
-                        <div class="col-md-3 col-6 px-2 pb-2">
-                            {% load static %}
-                            <img class="img-fluid w-100" src="{% static 'img/gallery-2.jpg' %}" alt="">
-                        </div>
-                        <div class="col-md-3 col-6 px-2 pb-2">
-                            {% load static %}
-                            <img class="img-fluid w-100" src="{% static 'img/gallery-3.jpg' %}" alt="">
-                        </div>
-                        <div class="col-md-3 col-6 px-2 pb-2">
-                            {% load static %}
-                            <img class="img-fluid w-100" src="{% static 'img/gallery-4.jpg' %}" alt="">
-                        </div>
+                        
                     </div>
                     <p>Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
                     <div class="row pt-2">
                         <div class="col-md-3 col-6 mb-2">
                             <i class="fa fa-car text-primary mr-2"></i>
-                            <span>Model: 2015</span>
+                            <span>{{car.anyoF}}</span>
                         </div>
                         <div class="col-md-3 col-6 mb-2">
                             <i class="fa fa-cogs text-primary mr-2"></i>
-                            <span>Automatic</span>
-                        </div>
-                        <div class="col-md-3 col-6 mb-2">
-                            <i class="fa fa-road text-primary mr-2"></i>
-                            <span>20km/liter</span>
-                        </div>
-                        <div class="col-md-3 col-6 mb-2">
-                            <i class="fa fa-eye text-primary mr-2"></i>
-                            <span>GPS Navigation</span>
-                        </div>
-                        <div class="col-md-3 col-6 mb-2">
-                            <i class="fa fa-car text-primary mr-2"></i>
-                            <span>Model: 2015</span>
-                        </div>
-                        <div class="col-md-3 col-6 mb-2">
-                            <i class="fa fa-cogs text-primary mr-2"></i>
-                            <span>Automatic</span>
-                        </div>
-                        <div class="col-md-3 col-6 mb-2">
-                            <i class="fa fa-road text-primary mr-2"></i>
-                            <span>20km/liter</span>
-                        </div>
-                        <div class="col-md-3 col-6 mb-2">
-                            <i class="fa fa-eye text-primary mr-2"></i>
-                            <span>GPS Navigation</span>
-                        </div>
-                        <div class="col-md-3 col-6 mb-2">
-                            <i class="fa fa-car text-primary mr-2"></i>
-                            <span>Model: 2015</span>
-                        </div>
-                        <div class="col-md-3 col-6 mb-2">
-                            <i class="fa fa-cogs text-primary mr-2"></i>
-                            <span>Automatic</span>
+                            <span>
+                                {%for t in transmision%}
+                                    {%if t.carID.id == car.id%}
+                                        <span>{{t.transmissionIDs}}</span>
+                                    {%endif%}
+                                {%endfor%}
+                            </span>
                         </div>
                         <div class="col-md-3 col-6 mb-2">
                             <i class="fa fa-road text-primary mr-2"></i>
@@ -253,6 +218,10 @@
                             <span>GPS Navigation</span>
                         </div>
                     </div>
+                    {% else %}
+                    <h1 class="display-4 text-uppercase mb-5" id="carName">Coche no disponible/{{selectedCar}}</h1>
+                    {%endif%}
+                    {%endfor%}
                </div>
                
                 <div class="col-lg-4 mb-5">

@@ -111,6 +111,7 @@
 
 
     <!-- Search Start -->
+  
     <div class="container-fluid bg-white pt-3 px-lg-5">
         <div class="row mx-n2">
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
@@ -143,7 +144,8 @@
                 </div>
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
-                <select id="carSelect" class="custom-select px-4 mb-3" style="height: 50px;">
+                {% csrf_token %}
+                <select name="carSelect" class="custom-select px-4 mb-3" style="height: 50px;">
                     <option selected>Select A Car</option>
                     {%for car in coches %}
                     <option value="{{car.id}}" >{{car.nombre}}</option>
@@ -153,10 +155,11 @@
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
                 
-                <a href="{% url 'detail'%}"><button class="btn btn-primary btn-block mb-3" type="submit" style="height: 50px;" onclick="search()">Search</button></a>
+                <a href="{% url 'detail'%}"><button class="btn btn-primary btn-block mb-3" type="submit" style="height: 50px;">Search</button></a>
             </div>
         </div>
     </div>
+   
     <!-- Search End -->
 
 
@@ -388,9 +391,7 @@
     <!-- Template Javascript -->
     {% load static %}
     <script src="{% static 'js/main.js' %}"></script>
-    <!-- javascript propio -->
-    {% load static %}
-    <script src="{% static 'js/searchBar.js' %}"></script>
+    
 </body>
 
 </html>

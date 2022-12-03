@@ -1,7 +1,11 @@
 from http.client import HTTPResponse
 from django.http import HttpResponse
 from django.shortcuts import get_list_or_404, render, loader
+
 from .models import Car,Location, Transmission
+from .forms import SearchCar
+
+carValue = -1
 
 def index(request):
     localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
@@ -14,7 +18,9 @@ def car(request):
     localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
     coches = get_list_or_404(Car.objects.order_by('nombre'))
     transmission = get_list_or_404(Transmission.objects.all())
+    
     context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission}
+
     return render(request, 'car.html', context)
 
 def about(request):
@@ -41,7 +47,7 @@ def detail(request):
     localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
     coches = get_list_or_404(Car.objects.order_by('nombre'))
     transmission = get_list_or_404(Transmission.objects.all())
-    context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission}
+    context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission, 'selectedCar': carValue}
     return render(request, "detail.html", context)
 
 def service(request):
