@@ -359,7 +359,7 @@
             <h1 class="display-4 text-uppercase text-center mb-5">Find Your Car</h1>
             <div class="row">
                 {%for car in coches%}
-                <div class="col-lg-4 col-md-6 mb-2">
+                <div class="col-lg-4 col-md-6 mb-2" name="{{car.marca}}">
                     <div class="rent-item mb-4">
                        
                         <img class="img-fluid mb-4" src="../static/{{car.img_url}}" alt="">
@@ -611,38 +611,11 @@
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="owl-carousel vendor-carousel">
+                {%for m in marcas%}
                 <div class="bg-light p-4">
-                    {% load static %}
-                    <img src="{% static 'img/vendor-1.png' %}" alt="">
+                    <button onclick="toggleVision('{{m.nombre}}')"><img src="../static/{{m.img_url}}" alt=""></button>
                 </div>
-                <div class="bg-light p-4">
-                    {% load static %}
-                    <img src="{% static 'img/vendor-2.png' %}" alt="">
-                </div>
-                <div class="bg-light p-4">
-                    {% load static %}
-                    <img src="{% static 'img/vendor-3.png' %}" alt="">
-                </div>
-                <div class="bg-light p-4">
-                    {% load static %}
-                    <img src="{% static 'img/vendor-4.png' %}" alt="">
-                </div>
-                <div class="bg-light p-4">
-                    {% load static %}
-                    <img src="{% static 'img/vendor-5.png' %}" alt="">
-                </div>
-                <div class="bg-light p-4">
-                    {% load static %}
-                    <img src="{% static 'img/vendor-6.png' %}" alt="">
-                </div>
-                <div class="bg-light p-4">
-                    {% load static %}
-                    <img src="{% static 'img/vendor-7.png' %}" alt="">
-                </div>
-                <div class="bg-light p-4">
-                    {% load static %}
-                    <img src="{% static 'img/vendor-8.png' %}" alt="">
-                </div>
+                {%endfor%}
             </div>
         </div>
     </div>
@@ -750,6 +723,9 @@
     <!-- Template Javascript -->
     {% load static %}
     <script src="{% static 'js/main.js' %}"></script>
+     <!-- JavaScript propio-->
+     {% load static %}
+     <script src="{% static 'js/VisionMarcas.js' %}"></script>
 </body>
 
 </html>

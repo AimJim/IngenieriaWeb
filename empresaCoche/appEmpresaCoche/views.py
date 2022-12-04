@@ -2,7 +2,7 @@ from http.client import HTTPResponse
 from django.http import HttpResponse
 from django.shortcuts import get_list_or_404, render, loader
 
-from .models import Car,Location, Transmission
+from .models import Car,Location, Transmission, Marca
 from .forms import SearchCar
 
 carValue = -1
@@ -11,16 +11,17 @@ def index(request):
     localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
     coches = get_list_or_404(Car.objects.order_by('nombre'))
     transmission = get_list_or_404(Transmission.objects.all())
-    context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission}
+    marcas = get_list_or_404(Marca.objects.all())
+    context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission, 'marcas': marcas}
     return render(request, "index.html", context)
 
 def car(request):
     localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
     coches = get_list_or_404(Car.objects.order_by('nombre'))
     transmission = get_list_or_404(Transmission.objects.all())
+    marcas = get_list_or_404(Marca.objects.all())
+    context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission, 'marcas': marcas}
     
-    context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission}
-
     return render(request, 'car.html', context)
 
 def about(request):
@@ -43,7 +44,8 @@ def contact(request):
     context = {'localizaciones': localizaciones, 'coches': coches}
     return render(request, "contact.html", context)
 
-def detail(request):
+def detail(request, pk):
+    
     localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
     coches = get_list_or_404(Car.objects.order_by('nombre'))
     transmission = get_list_or_404(Transmission.objects.all())
