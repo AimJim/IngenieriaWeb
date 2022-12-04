@@ -44,12 +44,13 @@ def contact(request):
     context = {'localizaciones': localizaciones, 'coches': coches}
     return render(request, "contact.html", context)
 
-def detail(request, pk):
+def detail(request):
     
     localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
     coches = get_list_or_404(Car.objects.order_by('nombre'))
     transmission = get_list_or_404(Transmission.objects.all())
-    context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission, 'selectedCar': carValue}
+    marcas = get_list_or_404(Marca.objects.all())
+    context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission, 'marcas': marcas}
     return render(request, "detail.html", context)
 
 def service(request):

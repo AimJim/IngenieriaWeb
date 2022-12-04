@@ -2,7 +2,8 @@
 
 
 function toggleVision(id){
-    var carDivs = document.getElementsByClassName("col-lg-4 col-md-6 mb-2");
+    
+    var carDivs = document.getElementsByClassName("coche");
     var coches = document.getElementsByName(""+id)
     for(var j = 0; j<carDivs.length; j++){
         if(""+id === "ALL"){
