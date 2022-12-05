@@ -8,17 +8,10 @@ from .forms import PersonalDetail
 
 
 
-def carRedirect(request):
-    if(request.method == "POST"):
-        carBusc = request.POST.getlist('carT')
-        print(carBusc)
-    else:
-        carBusc = '1'
-    try:
-        carBusc = int(carBusc)
-    except:
-        carBusc = 1
+def carRedirect(request, id):
+    carBusc = id
 
+    print(carBusc)
     context = {'carS' : carBusc}
 
     return render(request, 'carRedirect.html', context)

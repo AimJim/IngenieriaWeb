@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
     
-    <meta http-equiv="refresh" method=POST content="0; {% url 'booking' %}" />
+    
     <title>InDSS CARS - Car Rental HTML Template</title>
 
     
@@ -12,9 +12,15 @@
     <link href="{% static 'img/favicon.png' %}" rel="icon">
     </head>
     <body>
+        <form action="{% url 'booking' %}" method="post">
+            {% csrf_token %}
+            <input class="button" id="input" type="submit" name="carSelect" value="{{carS}}">Click en el numero para redireccionar
+        </form>
         
-        <p name="carSelect" value="{{carS}}"><a href="{% static 'booking' %}">Redirect</a></p>
     </body>
     
+    <!--JavaScript propio-->
+    {% load static %}
+    <script src="{% static 'clickCar.js' %}"></script>
 
 </html>

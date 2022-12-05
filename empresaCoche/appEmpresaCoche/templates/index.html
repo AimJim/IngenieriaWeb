@@ -380,12 +380,9 @@
                                 <span>{{car.km}}</span>
                             </div>
                         </div>
-                        <form method="POST" action="{% url 'carRedirect' %}">
-                            {% csrf_token %}
-                            <select style="display: none"><option selected value="{{car.id}}" id="coche{{car.id}}"></option></select>
-                            
-                            <button type="submit" onmouseenter="clickCar('{{car.id}}')" onmouseleave="exitCar('{{car.id}}')"><a class="btn btn-primary px-3" >{{car.precio}}€</a></button>
-                        </form>
+                        
+                        <button ><a class="btn btn-primary px-3" href="/carRedirect/{{car.id}}">{{car.precio}}€</a></button>
+                        
                     </div>
                 </div>
                 {%endif%}
