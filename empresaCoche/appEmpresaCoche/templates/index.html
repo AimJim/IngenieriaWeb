@@ -10,7 +10,7 @@
 
     <!-- Favicon -->
     {% load static %}
-    <link rel="icon" href="{% static 'img/favicon.ico' %}" >
+    <link rel="icon" href="{% static 'img/favicon.png' %}" >
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -81,34 +81,24 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        {% load static %}
                         <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
-                        {% load static %}
                         <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
-                        {% load static %}
                         <a href="{% url 'service' %}" class="nav-item nav-link">Service</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cars</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                {% load static %}
                                 <a href="{% url 'car' %}" class="dropdown-item">Car Listing</a>
-                                {% load static %}
                                 <a href="{% url 'detail' %}" class="dropdown-item">Car Detail</a>
-                                {% load static %}
                                 <a href="{% url 'booking' %}" class="dropdown-item">Car Booking</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown">
-                            {% load static %}
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                {% load static %}
                                 <a href="{% url 'team' %}" class="dropdown-item">The Team</a>
-                                {% load static %}
                                 <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        {% load static %}
                         <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>

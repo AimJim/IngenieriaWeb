@@ -10,7 +10,7 @@
 
     <!-- Favicon -->
     {% load static %}
-    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+    <link href="{% static 'img/favicon.png' %}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -184,8 +184,13 @@
             <div class="row">
                 <div class="col-lg-8 mb-5">
                     {% for car in coches %}
-                    {% if car.id == selectedCar %}
-                    <h1 class="display-4 text-uppercase mb-5" id="carName">{{car.nombre}}</h1>
+                    
+                    {% if car.id == 1 %}
+                    <div class="cocheView" name="{{car.nombre}}" style="display: block">
+                    {% else %}
+                    <div class="cocheView" name="{{car.nombre}}" style="display: none">
+                    {%endif%}
+                    <h1 class="display-4 text-uppercase mb-5">{{car.nombre}}</h1>
                     <div class="row mx-n2 mb-3">
                         <div class="col-md-3 col-6 px-2 pb-2">
                             
@@ -218,9 +223,8 @@
                             <span>GPS Navigation</span>
                         </div>
                     </div>
-                    {% else %}
-                    <h1 class="display-4 text-uppercase mb-5" id="carName">Coche no disponible/{{selectedCar}}</h1>
-                    {%endif%}
+                    
+                    </div>
                     {%endfor%}
                </div>
                
@@ -280,9 +284,7 @@
             <h2 class="mb-4">Related Cars</h2>
             <div class="owl-carousel related-carousel position-relative" style="padding: 0 30px;">
                 {% for car in coches %}
-                <div class="rent-item coche" name="{{car.marca}}">
-                    
-                    
+                <div class="rent-item">
                     <img class="img-fluid mb-4" src="../static/{{car.img_url}}" alt="">
                     <h4 class="text-uppercase mb-4">{{car.nombre}}</h4>
                     <div class="d-flex justify-content-center mb-4">
@@ -304,7 +306,7 @@
                         </div>
                     </div>
                     
-                    <a class="btn btn-primary px-3" href="">{{car.precio}}€/dia</a>
+                    <button onclick="showCar('{{car.nombre}}')"><a class="btn btn-primary px-3">{{car.precio}}€/dia</a></button>
                     
                 </div>
                 {%endfor%}
@@ -432,6 +434,9 @@
     <!-- Template Javascript -->
     {% load static %}
     <script src="{% static 'js/main.js' %}"></script>
+    <!-- JavaScript propio-->
+    {% load static %}
+    <script src="{% static 'js/detailVision.js' %}"></script>
 </body>
 
 </html>
