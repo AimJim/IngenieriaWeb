@@ -355,6 +355,8 @@
             <h1 class="display-4 text-uppercase text-center mb-5">Find Your Car</h1>
             <div class="row">
                 {%for car in coches%}
+                {%for t in transmision%}
+                {%if t.carID.id == car.id and t.transmissionIDs.nombre == "FR" %}
                 <div class="col-lg-4 col-md-6 mb-2 coche" name="{{car.marca}}">
                     <div class="rent-item mb-4">
                        
@@ -378,9 +380,16 @@
                                 <span>{{car.km}}</span>
                             </div>
                         </div>
-                        <a class="btn btn-primary px-3" href="">$99.00/Day</a>
+                        <form method="POST" action="{% url 'carRedirect' %}">
+                            {% csrf_token %}
+                            <select style="display: none"><option selected value="{{car.id}}" id="coche{{car.id}}"></option></select>
+                            
+                            <button type="submit" onmouseenter="clickCar('{{car.id}}')" onmouseleave="exitCar('{{car.id}}')"><a class="btn btn-primary px-3" >{{car.precio}}€</a></button>
+                        </form>
                     </div>
                 </div>
+                {%endif%}
+                {%endfor%}
                {%endfor%}
             </div>
         </div>
@@ -609,7 +618,7 @@
             <div class="owl-carousel vendor-carousel">
                 {%for m in marcas%}
                 <div class="bg-light p-4">
-                    <button onclick="toggleVision('{{m.nombre}}')"><img src="../static/{{m.img_url}}" alt=""></button>
+                    <img src="../static/{{m.img_url}}" alt="">
                 </div>
                 {%endfor%}
             </div>
@@ -695,10 +704,10 @@
     </div>
     <!-- Footer End -->
 
-
+    {%endblock%}
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-    {%endblock%}
+    
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -723,6 +732,8 @@
      <!-- JavaScript propio-->
      {% load static %}
      <script src="{% static 'js/VisionMarcas.js' %}"></script>
+     {% load static %}
+     <script src="{% static 'js/clickCar.js' %}"></script>
 </body>
 
 </html>

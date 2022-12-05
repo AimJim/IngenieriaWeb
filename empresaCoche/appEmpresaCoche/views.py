@@ -6,7 +6,22 @@ from .models import Car,Location, Transmission, Marca
 from .forms import PersonalDetail
 
 
-carValue = -1
+
+
+def carRedirect(request):
+    if(request.method == "POST"):
+        carBusc = request.POST.getlist('carT')
+        print(carBusc)
+    else:
+        carBusc = '1'
+    try:
+        carBusc = int(carBusc)
+    except:
+        carBusc = 1
+
+    context = {'carS' : carBusc}
+
+    return render(request, 'carRedirect.html', context)
 
 def index(request):
     localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
@@ -37,7 +52,6 @@ def booking(request):
 
     if(request.method == "POST"):
         carSearch = request.POST['carSelect']
-        print(carSearch)
     else:
         carSearch = '1'
     try:
