@@ -81,13 +81,13 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
+                        <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
                         <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
                         <a href="{% url 'service' %}" class="nav-item nav-link">Service</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cars</a>
+                        <div class="nav-item dropdown' ">
+                            <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Cars</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="{% url 'car' %}" class="dropdown-item">Car Listing</a>
+                                <a href="{% url 'car' %}" class="dropdown-item active">Car Listing</a>
                                 <a href="{% url 'detail' %}" class="dropdown-item">Car Detail</a>
                                 <a href="{% url 'booking' %}" class="dropdown-item">Car Booking</a>
                             </div>
@@ -695,8 +695,9 @@
     {%endblock%}
 
     <!-- JavaScript Libraries -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    
     {% load static %}
     <script src="{% static 'lib/easing/easing.min.js' %}"></script>
     {% load static %}
