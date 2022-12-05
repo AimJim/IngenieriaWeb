@@ -10,17 +10,20 @@
 
     {% load static %}
     <link href="{% static 'img/favicon.png' %}" rel="icon">
+    
     </head>
-    <body>
+    <body onload="click()">
         <form action="{% url 'booking' %}" method="post">
             {% csrf_token %}
-            <input class="button" id="input" type="submit" name="carSelect" value="{{carS}}">Click en el numero para redireccionar
+            <input  class="button" id="input" type="submit" name="carSelect" value="{{carS}}">Click en el numero para redireccionar
         </form>
         
     </body>
-    
-    <!--JavaScript propio-->
+       <!--JavaScript propio-->
     {% load static %}
-    <script src="{% static 'clickCar.js' %}"></script>
+    <script src="{% static 'js/clickCar.js' %}"></script>
+
+     
+    
 
 </html>
