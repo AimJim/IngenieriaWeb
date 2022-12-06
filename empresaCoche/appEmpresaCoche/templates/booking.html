@@ -95,8 +95,8 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="{% url 'team' %}" class="dropdown-item">The Team</a>
-                                <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
+                                <a href="/marcas/0" class="dropdown-item">The Brands</a>
+                                <a href="/categorias/0" class="dropdown-item">Categorias</a>
                             </div>
                         </div>
                         <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
@@ -353,7 +353,7 @@
             <div class="owl-carousel vendor-carousel">
                 {%for m in marcas%}
                 <div class="bg-light p-4">
-                    <img src="../static/{{m.img_url}}" alt="">
+                    <button><a href="/marcas/{{m.id}}"><img src="../static/{{m.img_url}}" alt=""></a></button>
                 </div>
                 {%endfor%}
             </div>

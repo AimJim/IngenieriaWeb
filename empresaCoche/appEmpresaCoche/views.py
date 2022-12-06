@@ -2,7 +2,7 @@ from http.client import HTTPResponse
 from django.http import HttpResponse
 from django.shortcuts import get_list_or_404, render, loader, get_object_or_404
 
-from .models import Car,Location, Transmission, Marca
+from .models import Car,Location, Transmission, Marca,Categoria
 from .forms import PersonalDetail
 
 
@@ -21,7 +21,8 @@ def index(request):
     coches = get_list_or_404(Car.objects.order_by('nombre'))
     transmission = get_list_or_404(Transmission.objects.all())
     marcas = get_list_or_404(Marca.objects.all())
-    context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission, 'marcas': marcas}
+    categorias = get_list_or_404(Categoria.objects.all())
+    context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission, 'marcas': marcas, 'categorias':categorias}
     return render(request, "index.html", context)
 
 def car(request):
@@ -83,17 +84,20 @@ def service(request):
     context = {'localizaciones': localizaciones, 'coches': coches, 'marcas': marcas}
     return render(request, "service.html", context)
 
-def team(request):
+def marcas(request, id):
     localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
     coches = get_list_or_404(Car.objects.order_by('nombre'))
     marcas = get_list_or_404(Marca.objects.all())
-    context = {'localizaciones': localizaciones, 'coches': coches, 'marcas': marcas}
-    return render(request, "team.html", context)
+    transmission = get_list_or_404(Transmission.objects.all())
+    context = {'localizaciones': localizaciones, 'coches': coches, 'marcas': marcas, 'transmision':transmission, 'selectedMarca' : id}
+    return render(request, "marcas.html", context)
 
-def testimonial(request):
+def categorias(request, id):
     localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
     coches = get_list_or_404(Car.objects.order_by('nombre'))
     marcas = get_list_or_404(Marca.objects.all())
-    context = {'localizaciones': localizaciones, 'coches': coches, 'marcas': marcas}
-    return render(request, "testimonial.html", context)
+    transmission = get_list_or_404(Transmission.objects.all())
+    categorias = get_list_or_404(Categoria.objects.all())
+    context = {'localizaciones': localizaciones, 'coches': coches, 'marcas': marcas, 'transmision':transmission, 'categorias':categorias, 'selectedTran':id}
+    return render(request, "categorias.html", context)
 

@@ -95,8 +95,8 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="{% url 'team' %}" class="dropdown-item">The Team</a>
-                                <a href="{% url 'testimonial' %}" class="dropdown-item active">Testimonial</a>
+                                <a href="/marcas/0" class="dropdown-item">The Brands</a>
+                                <a href="/categorias/0" class="dropdown-item active">Categorias</a>
                             </div>
                         </div>
                         <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
@@ -165,66 +165,111 @@
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header">
-        <h1 class="display-3 text-uppercase text-white mb-3">Testimonial</h1>
+        <h1 class="display-3 text-uppercase text-white mb-3">Categorias</h1>
         <div class="d-inline-flex text-white">
             <h6 class="text-uppercase m-0"><a class="text-white" href="">Home</a></h6>
             <h6 class="text-body m-0 px-3">/</h6>
-            <h6 class="text-uppercase text-body m-0">Testimonial</h6>
+            <h6 class="text-uppercase text-body m-0">Categorias</h6>
         </div>
     </div>
     <!-- Page Header Start -->
 
 
     <!-- Testimonial Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <h1 class="display-4 text-uppercase text-center mb-5">Our Client's Say</h1>
-            <div class="owl-carousel testimonial-carousel">
-                <div class="testimonial-item d-flex flex-column justify-content-center px-4">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        {% load static %}
-                        <img class="img-fluid ml-n4" src="img/testimonial-1.jpg" alt="">
-                        <h1 class="display-2 text-white m-0 fa fa-quote-right"> </h1>
+    <div class="container-fluid pt-5">
+        <div class="container pt-5 pb-3">
+            {%if selectedTran == 0 %}
+                <h1 class="display-4 text-uppercase mb-5">Ninguna categoria seleccionada</h1>
+                <div class="row align-items-center pb-2">
+                    <div class="col-lg-6 mb-4">
+                        </div>
+                        <p>Seleccione una categoria</p>
                     </div>
-                    <h4 class="text-uppercase mb-2">Client Name</h4>
-                    <i class="mb-2">Profession</i>
-                    <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit sea sed</p>
                 </div>
-                <div class="testimonial-item d-flex flex-column justify-content-center px-4">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        {% load static %}
-                        <img class="img-fluid ml-n4" src="{% static 'img/testimonial-2.jpg' %}" alt="">
-                        <h1 class="display-2 text-white m-0 fa fa-quote-right"> </h1>
+            {%endif%}
+
+            {% for t in categorias %}
+            
+            {% if t.id == selectedTran %}
+            <h1 class="display-4 text-uppercase mb-5">{{t.nombre}}</h1>
+            <div class="row align-items-center pb-2">
+                <div class="col-lg-6 mb-4">
+
+                    <img class="img-fluid" src="../static/{{t.img_url}}" alt="">
+                </div>
+                <div class="col-lg-6 mb-4">
                     </div>
-                    <h4 class="text-uppercase mb-2">Client Name</h4>
-                    <i class="mb-2">Profession</i>
-                    <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit sea sed</p>
-                </div>
-                <div class="testimonial-item d-flex flex-column justify-content-center px-4">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        {% load static %}
-                        <img class="img-fluid ml-n4" src="{% static 'img/testimonial-3.jpg' %}" alt="">
-                        <h1 class="display-2 text-white m-0 fa fa-quote-right"> </h1>
+                    <p>{{t.descripcion}}</p>
+                    <div class="d-flex pt-1">
+                        <h6>Share on:</h6>
+                        <div class="d-inline-flex">
+                            <a class="px-2" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="px-2" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="px-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a class="px-2" href=""><i class="fab fa-pinterest"></i></a>
+                        </div>
                     </div>
-                    <h4 class="text-uppercase mb-2">Client Name</h4>
-                    <i class="mb-2">Profession</i>
-                    <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit sea sed</p>
                 </div>
-                <div class="testimonial-item d-flex flex-column justify-content-center px-4">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        {% load static %}
-                        <img class="img-fluid ml-n4" src="{% static 'img/testimonial-4.jpg' %}" alt="">
-                        <h1 class="display-2 text-white m-0 fa fa-quote-right"> </h1>
+            </div> 
+            <div class="row">
+                {%for car in coches%}
+                {% for tr in transmision %}
+                
+                {%if car.id == tr.carID.id%}
+                {% if t.id == tr.transmissionIDs.id %}
+
+                <div class="col-lg-4 col-md-6 mb-2 coche" name="{{car.marca}}">
+                    <div class="rent-item mb-4">
+                       
+                        <img class="img-fluid mb-4" src="../static/{{car.img_url}}" alt="">
+                        <h4 class="text-uppercase mb-4">{{car.nombre}}</h4>
+                        <div class="d-flex justify-content-center mb-4">
+                            <div class="px-2">
+                                <i class="fa fa-car text-primary mr-1"></i>
+                                <span>{{car.anyoF}}</span>
+                            </div>
+                            <div class="px-2 border-left border-right">
+                                <i class="fa fa-cogs text-primary mr-1"></i>
+                                {%for t in transmision%}
+                                    {%if t.carID.id == car.id%}
+                                    <span>{{t.transmissionIDs}}</span>
+                                    {%endif%}
+                                {%endfor%}
+                            </div>
+                            <div class="px-2">
+                                <i class="fa fa-road text-primary mr-1"></i>
+                                <span>{{car.km}}</span>
+                            </div>
+                        </div>
+                        
+                        <button ><a class="btn btn-primary px-3" href="/carRedirect/{{car.id}}">{{car.precio}}€</a></button>
+                        
                     </div>
-                    <h4 class="text-uppercase mb-2">Client Name</h4>
-                    <i class="mb-2">Profession</i>
-                    <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit sea sed</p>
                 </div>
+                {%endif%}
+                {%endif%}
+                {%endfor%}
+               {%endfor%}
             </div>
+            {%endif%}
+            {%endfor%}
         </div>
     </div>
     <!-- Testimonial End -->
 
+    <!-- Category List -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="owl-carousel vendor-carousel">
+                {%for c in categorias%}
+                <div class="bg-light p-4">
+                    <button><a href="/categorias/{{c.id}}"><h1 class="display-3 text-uppercase mb-3">{{c.nombre}}</h1></a></button>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+    <!-- List end-->
 
     <!-- Vendor Start -->
     <div class="container-fluid py-5">
@@ -232,7 +277,7 @@
             <div class="owl-carousel vendor-carousel">
                 {%for m in marcas%}
                 <div class="bg-light p-4">
-                    <img src="../static/{{m.img_url}}" alt="">
+                    <button><a href="/marcas/{{m.id}}"><img src="../static/{{m.img_url}}" alt=""></a></button>
                 </div>
                 {%endfor%}
             </div>

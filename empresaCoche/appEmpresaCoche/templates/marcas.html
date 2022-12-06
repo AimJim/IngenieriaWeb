@@ -95,8 +95,8 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="{% url 'team' %}" class="dropdown-item active">The Team</a>
-                                <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
+                                <a href="/marcas/0" class="dropdown-item active">The Brands</a>
+                                <a href="/categorias/0" class="dropdown-item">Categorias</a>
                             </div>
                         </div>
                         <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
@@ -165,73 +165,88 @@
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header">
-        <h1 class="display-3 text-uppercase text-white mb-3">The Team</h1>
+        <h1 class="display-3 text-uppercase text-white mb-3">The Brands</h1>
         <div class="d-inline-flex text-white">
             <h6 class="text-uppercase m-0"><a class="text-white" href="">Home</a></h6>
             <h6 class="text-body m-0 px-3">/</h6>
-            <h6 class="text-uppercase text-body m-0">The Team</h6>
+            <h6 class="text-uppercase text-body m-0">Marcas</h6>
         </div>
     </div>
     <!-- Page Header Start -->
 
 
     <!-- Team Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <h1 class="display-4 text-uppercase text-center mb-5">Meet Our Team</h1>
-            <div class="owl-carousel team-carousel position-relative" style="padding: 0 30px;">
-                <div class="team-item">
-                    {% load static %}
-                    <img class="img-fluid w-100" src="{% static 'img/team-1.jpg' %}" alt="">
-                    <div class="position-relative py-4">
-                        <h4 class="text-uppercase">Full Name</h4>
-                        <p class="m-0">Designation</p>
-                        <div class="team-social position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
-                            <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+    <div class="container-fluid pt-5">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-lg-8 mb-5">
+                    {% if selectedMarca == 0 %}
+                    <div  style="display: block">
+
+                        <h1 class="display-4 text-uppercase mb-5">Niinguna marca Seleccionada</h1>
+                        <div class="row mx-n2 mb-3">
+                            
                         </div>
-                    </div>
-                </div>
-                <div class="team-item">
-                    {% load static %}
-                    <img class="img-fluid w-100" src="{% static 'img/team-2.jpg' %}" alt="">
-                    <div class="position-relative py-4">
-                        <h4 class="text-uppercase">Full Name</h4>
-                        <p class="m-0">Designation</p>
-                        <div class="team-social position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
-                            <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <p>Por favor, seleccione una marca</p>
+                        
+                        
                         </div>
-                    </div>
-                </div>
-                <div class="team-item">
-                    {% load static %}
-                    <img class="img-fluid w-100" src="{% static 'img/team-3.jpg' %}" alt="">
-                    <div class="position-relative py-4">
-                        <h4 class="text-uppercase">Full Name</h4>
-                        <p class="m-0">Designation</p>
-                        <div class="team-social position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
-                            <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    {%endif%}
+                    {% for marca in marcas %}
+                    
+                    {% if marca.id == selectedMarca %}
+                    <div class="marcaView" name="{{marca.nombre}}" style="display: block">
+
+                    <h1 class="display-4 text-uppercase mb-5">{{marca.nombre}}</h1>
+                    <div class="row mx-n2 mb-3">
+                        <div class="col-md-3 col-6 px-2 pb-2">
+                            
+                            <img class="img-fluid w-100" src="../static/{{marca.img_url}}" alt="">
                         </div>
+                        
                     </div>
-                </div>
-                <div class="team-item">
-                    {% load static %}
-                    <img class="img-fluid w-100" src="{% static 'img/team-4.jpg' %}" alt="">
-                    <div class="position-relative py-4">
-                        <h4 class="text-uppercase">Full Name</h4>
-                        <p class="m-0">Designation</p>
-                        <div class="team-social position-absolute w-100 h-100 d-flex align-items-center justify-content-center">
-                            <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <p>{{marca.descripcion}}</p>
+                   
+                    <div class="row">
+                        {%for car in coches%}
+                        {%if car.marca == marca %}
+                        <div class="col-lg-4 col-md-6 mb-2 coche" name="{{car.marca}}">
+                            <div class="rent-item mb-4">
+                               
+                                <img class="img-fluid mb-4" src="../static/{{car.img_url}}" alt="">
+                                <h4 class="text-uppercase mb-4">{{car.nombre}}</h4>
+                                <div class="d-flex justify-content-center mb-4">
+                                    <div class="px-2">
+                                        <i class="fa fa-car text-primary mr-1"></i>
+                                        <span>{{car.anyoF}}</span>
+                                    </div>
+                                    <div class="px-2 border-left border-right">
+                                        <i class="fa fa-cogs text-primary mr-1"></i>
+                                        {%for t in transmision%}
+                                            {%if t.carID.id == car.id%}
+                                            <span>{{t.transmissionIDs}}</span>
+                                            {%endif%}
+                                        {%endfor%}
+                                    </div>
+                                    <div class="px-2">
+                                        <i class="fa fa-road text-primary mr-1"></i>
+                                        <span>{{car.km}}</span>
+                                    </div>
+                                </div>
+                                
+                                <button ><a class="btn btn-primary px-3" href="/carRedirect/{{car.id}}">{{car.precio}}€</a></button>
+                                
+                            </div>
                         </div>
+                        {%endif%}
+                       {%endfor%}
                     </div>
-                </div>
+                    
+                    </div>
+                    {%endif%}
+                    {%endfor%}
+               </div>
+               
             </div>
         </div>
     </div>
@@ -244,7 +259,7 @@
             <div class="owl-carousel vendor-carousel">
                 {%for m in marcas%}
                 <div class="bg-light p-4">
-                    <img src="../static/{{m.img_url}}" alt="">
+                    <button><a href="/marcas/{{m.id}}"><img src="../static/{{m.img_url}}" alt=""></a></button>
                 </div>
                 {%endfor%}
             </div>
