@@ -14,4 +14,5 @@ urlpatterns = [
     path('marcas/<int:id>', views.marcas, name='marcas'),
     path('categorias/<int:id>', views.categorias, name='categorias'),
     path('carRedirect/<int:id>', views.carRedirect, name='carRedirect'),
+    path('form1', views.personalDetail, name ='form1'),
 ]

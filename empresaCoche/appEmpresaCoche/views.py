@@ -1,9 +1,10 @@
 from http.client import HTTPResponse
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_list_or_404, render, loader, get_object_or_404
 
 from .models import Car,Location, Transmission, Marca,Categoria
 from .forms import PersonalDetail
+from django.core.mail import send_mail
 
 
 
@@ -57,9 +58,49 @@ def booking(request):
     coches = get_list_or_404(Car.objects.order_by('nombre'))
     transmission = get_list_or_404(Transmission.objects.all())
     marcas = get_list_or_404(Marca.objects.all())
-    
-    context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission, 'marcas': marcas , 'selectedCar':carSearch}
+    formulario1 = PersonalDetail()
+
+    context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission, 'marcas': marcas , 'selectedCar':carSearch, 'form1': formulario1}
     return render(request, "booking.html", context)
+
+def personalDetail(request):
+    localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
+    coches = get_list_or_404(Car.objects.order_by('nombre'))
+    transmission = get_list_or_404(Transmission.objects.all())
+    marcas = get_list_or_404(Marca.objects.all())
+    formulario1 = PersonalDetail()
+
+    context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission, 'marcas': marcas , 'selectedCar': 1, 'form1':formulario1}
+
+    if(request.method == "POST"):
+        print('1. if')
+        form = PersonalDetail(request.POST)
+        if(form.is_valid() or True):
+            print('2. if')
+            name = form.cleaned_data['firstName']
+            
+            lname = form.cleaned_data['lastName']
+
+            email = form.changed_data['email']
+
+            pickUpL = form.cleaned_data['pickLocation']
+
+            dropL = form.cleaned_data['dropLocation']
+
+            puD = form.changed_data['pickUpDate']
+
+            puT = form.changed_data['pickUpTime']
+
+            request = form.changed_data['request']
+            print('me 3,14ca el culo')
+            send_mail('indss booking', ''+name+lname+email+pickUpL+dropL+puD+puT+request, 'eneko.hernando@gmail.com', ['aimar.jimenez@opendeusto.es'], fail_silently=False, )    
+            return HttpResponseRedirect("index")
+        else:
+            PersonalDetail()
+            return render(request, "booking.html", context)
+    else: 
+        PersonalDetail()
+        return render(request, "booking.html", context)
 
 def contact(request):
     localizaciones = get_list_or_404(Location.objects.order_by('nombre'))
