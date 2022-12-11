@@ -73,11 +73,15 @@ def personalDetail(request):
     context = {'localizaciones': localizaciones, 'coches': coches, 'transmision':transmission, 'marcas': marcas , 'selectedCar': 1, 'form1':formulario1}
 
     if(request.method == "POST"):
+<<<<<<< Updated upstream
         
+=======
+>>>>>>> Stashed changes
         form = PersonalDetail(request.POST)
         if(form.is_valid()):
             
             name = form.cleaned_data['firstName']
+<<<<<<< Updated upstream
             if(name == ""):
                 PersonalDetail()
                 return render(request, 'booking.html', context)
@@ -124,6 +128,48 @@ def personalDetail(request):
             dropL.__str__() + ' Fecha de recogida: ' + puD + ' Horario de recogida: ' + puT + ' Peticiones especiales: ' + request + '\n')
             f.close()
             
+=======
+            if(name == '' or lname == ' '):
+                PersonalDetail()
+                return render(request, "booking.html", context)
+            
+            lname = form.cleaned_data['lastName']
+            if(lname == '' or lname == ' '):
+                PersonalDetail()
+                return render(request, "booking.html", context)
+
+            email = form.changed_data['email']
+            if(email == '' or email.split('@').len() != 2 or email.split('@')[1] not in "gmail.com"):
+                PersonalDetail()
+                return render(request, "booking.html", context)
+
+            pickUpL = form.cleaned_data['pickLocation']
+            if(pickUpL == '' or pickUpL == ' '):
+                PersonalDetail()
+                return render(request, "booking.html", context)
+
+            dropL = form.cleaned_data['dropLocation']
+            if(dropL == '' or dropL == ' '):
+                PersonalDetail()
+                return render(request, "booking.html", context)
+
+            puD = form.changed_data['pickUpDate']
+            if(puD == ' ' ):
+                PersonalDetail()
+                return render(request, "booking.html", context)
+
+            puT = form.changed_data['pickUpTime']
+            if(puT == ''):
+                PersonalDetail()
+                return render(request, "booking.html", context)
+
+            request = form.changed_data['request']
+            if(request == ''):
+                PersonalDetail()
+                return render(request, "booking.html", context)
+
+            send_mail('indss booking', ''+name+lname+email+pickUpL+dropL+puD+puT+request, 'eneko.hernando@gmail.com', ['aimar.jimenez@opendeusto.es'], fail_silently=False, )    
+>>>>>>> Stashed changes
             return HttpResponseRedirect("index")
         else:
             PersonalDetail()
